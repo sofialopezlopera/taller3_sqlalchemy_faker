@@ -35,7 +35,7 @@ def main() -> None:
         for _ in range(100000)
     ]
 
-    #inserción masiva con execute()
+    # Inserción masiva optimizada utilizando execute() de SQLAlchemy
     session.execute(insert(Usuario), rows)
     session.commit()
 
