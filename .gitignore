@@ -1,4 +1,11 @@
+
 .venv/
 .env
+
+# Archivos cache de Python
 __pycache__/
+*.pyc
+
+# Archivos del sistema
+.DS_Store
 
