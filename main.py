@@ -5,7 +5,7 @@ from sqlalchemy import text, insert
 
 
 def main() -> None:
-
+# Implementación de generación automática de datos para poblar la base de datos
     fake = Faker('es_ES')
 
     # Crear tabla automáticamente
@@ -17,11 +17,10 @@ def main() -> None:
     session.query(Usuario).delete()
     session.commit()
 
-    # Reiniciar AUTO_INCREMENT
+    # limpiar registros anteriores y reiniciar el autoincremento 
     session.execute(text("ALTER TABLE personas_sofia AUTO_INCREMENT = 1"))
     session.commit()
 
-    # ✅ LISTA DE DICCIONARIOS (LO QUE PIDE EL PROFE)
     rows = [
         {
             "nombre": fake.name(),
@@ -36,7 +35,7 @@ def main() -> None:
         for _ in range(100000)
     ]
 
-    # ✅ INSERCIÓN MASIVA CON execute()
+    #inserción masiva con execute()
     session.execute(insert(Usuario), rows)
     session.commit()
 
@@ -45,4 +44,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-    
